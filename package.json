@@ -4,7 +4,7 @@
   "version": "0.0.2",
   "main": "bot.js",
   "scripts": {
-    "test": "npm test"
+    "test": ""
   },
   "keywords": [],
   "author": "Cody Cooper",
