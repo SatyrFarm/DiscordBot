@@ -1,0 +1,15 @@
+{
+  "name": "SFdiscord",
+  "description": "A Bot for SatyrFarm Discord",
+  "version": "0.0.1",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Cody Cooper",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^11.4.2"
+  }
+}
