@@ -1,5 +1,6 @@
 {
-  "token": "insert-bot-token-here",
+  "token": "",
   "prefix": "!",
+  "version": "0.0.1",
   "ownerID": "your-user-ID"
 }
