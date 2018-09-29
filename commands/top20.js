@@ -7,23 +7,22 @@ const embed = new RichEmbed()
   .setURL("https://satyrfarm.github.io")
   .setAuthor(
     "Satyr Farm Statistics",
-    "https://i.imgur.com/wSTFkRM.png",
+    "https://opensimworld.com/css/sflogo.png",
     "https://discord.js.org"
   )
   .setDescription("As of now")
-  .setThumbnail("https://i.imgur.com/wSTFkRM.png")
-  .addField("#1 : Display Name , Username", "Points")
+  .setThumbnail("https://opensimworld.com/css/sflogo.png")
   .addBlankField()
-  .setImage("https://i.imgur.com/wSTFkRM.png")
+  .setImage("https://opensimworld.com/css/sflogo.png")
   .setTimestamp()
   .setFooter(
-    "Statistics are up to date as of the above timestamp",
-    "https://i.imgur.com/wSTFkRM.png"
+    "Statistics are up to date as of the this timestamp",
+    "https://opensimworld.com/css/sflogo.png"
   );
 
 const createEmbed = async () => {
   try {
-    const body = await request("http://opensimworld.com/farmstats/top.json"); // body is the body of the request
+    const body = await request("https://opensimworld.com/farmstats/top.json"); // body is the body of the request
     const users = JSON.parse(body); // users will be the parsed body
     users.forEach((user, i) => { // loops through all the users
       if (i > 19) return; // since the index is 0-filed, it will start at 0 and go to 19 for 20 users
