@@ -23,7 +23,8 @@ const embed = new RichEmbed()
 
 const createEmbed = async () => {
   try {
-    const users = await request("http://opensimworld.com/farmstats/top.json"); // users will be the body of the request
+    const body = await request("http://opensimworld.com/farmstats/top.json"); // body is the body of the request
+    const users = JSON.parse(body); // users will be the parsed body
     users.forEach((user, i) => { // loops through all the users
       if (i > 19) return; // since the index is 0-filed, it will start at 0 and go to 19 for 20 users
       const { username, display_name, farmPoints } = user; // destructures the user object into username, display_name, and points
