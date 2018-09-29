@@ -1,15 +1,18 @@
 {
   "name": "SFdiscord",
   "description": "A Bot for SatyrFarm Discord",
-  "version": "0.0.2",
+  "repository": "https://github.com/SatyrFarm/DiscordBot",
+  "version": "1.0.0",
   "main": "bot.js",
   "scripts": {
     "test": ""
   },
   "keywords": [],
   "author": "Cody Cooper",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
-    "discord.js": "^11.4.2"
+    "discord.js": "^11.4.2",
+    "request": "latest",
+    "request-promise": "^4.2.2"
   }
 }
