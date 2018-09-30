@@ -1,7 +1,9 @@
-var JokesArray = ['What do you call a cow with no legs?
-Ground beef.', 'What do you call a sleeping bull?
-A Bulldozer.', 'What did the mama cow say to the baby cow?
-It’s pasture bedtime.'];   
+var JokesArray = [
+'What do you call a cow with no legs? Ground beef', 
+'What do you call a sleeping bull? A Bulldozer.', 
+'What did the mama cow say to the baby cow? It is pasture bedtime.'
+];   
+
 var randomJoke = JokesArray[Math.floor(Math.random() * JokesArray.length)];
 
 module.exports = {
