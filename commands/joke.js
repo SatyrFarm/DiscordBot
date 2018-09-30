@@ -9,10 +9,12 @@ var JokesArray = [
 module.exports = {
 	name: 'joke',
 	description: 'Tell a random joke',
-	cooldown: 10,
+	cooldown: 0,
 	execute(message) {
 		var randomJoke = JokesArray[Math.floor(Math.random() * JokesArray.length)];
 		
 		message.channel.send(randomJoke);
 	},
 };
+
+
