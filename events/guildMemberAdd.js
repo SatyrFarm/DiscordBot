@@ -9,10 +9,21 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 */
 
 
-module.exports = {
-	name: 'user-info',
-	description: 'Display info about yourself.',
-	execute(message) {
-		message.channel.send(`Your username: ${message.author.username}\nYour ID: ${message.author.id}`);
-	},
+module.exports = (client, member) => {
+
+  // console.log(member.user.username);
+  checkUserName(member.user, member.guild, client);
+
+
+  
+    // Replace the placeholders in the welcome message with actual data
+    const welcomeMessage = "Hello, {{user}}";
+
+    // Send the welcome message to the welcome channel
+    // There's a place for more configs here.
+    member.guild.channels.find("name", settings.welcomeChannel).send(welcomeMessage).catch(console.error);
+    
+  
 };
+
+

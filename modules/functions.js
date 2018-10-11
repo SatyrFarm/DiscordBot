@@ -9,10 +9,20 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 */
 
 
-module.exports = {
-	name: 'user-info',
-	description: 'Display info about yourself.',
-	execute(message) {
-		message.channel.send(`Your username: ${message.author.username}\nYour ID: ${message.author.id}`);
-	},
+module.exports = (client) => {
+
+
+  // These 2 process methods will catch exceptions and give *more details* about the error and stack trace.
+  process.on("uncaughtException", (err) => {
+    const errorMsg = err.stack.replace(new RegExp(`${__dirname}/`, "g"), "./");
+    console.log(`Uncaught Exception: ${errorMsg}`);
+    // Always best practice to let the code crash on uncaught exceptions.
+    // Because you should be catching them anyway.
+    process.exit(1);
+  });
+
+  process.on("unhandledRejection", err => {
+    console.log(`Unhandled rejection: ${err}`);
+  });
+
 };
