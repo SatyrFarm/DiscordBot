@@ -11,9 +11,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 module.exports = (client, member) => {
 
-  // console.log(member.user.username);
-  checkUserName(member.user, member.guild, client);
-
 
   
     // Replace the placeholders in the welcome message with actual data
