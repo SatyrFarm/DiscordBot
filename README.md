@@ -9,4 +9,3 @@
 [![Twitter](https://img.shields.io/twitter/url/https/github.com/SatyrFarm/DiscordBot.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2FSatyrFarm%2FDiscordBot)
 
 A Discord Bot made for Satyr Farm, a OpenSimulator System
-
