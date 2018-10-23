@@ -1,6 +1,6 @@
 # DiscordBot
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/28f55138f2f14bce8bf784aa303b8122)](https://app.codacy.com/app/hollowomnicron/DiscordBot?utm_source=github.com&utm_medium=referral&utm_content=SatyrFarm/DiscordBot&utm_campaign=Badge_Grade_Dashboard)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/675ef9c0c17c4b68a9b9bc3f40f1da38)](https://www.codacy.com/app/SatyrFarm/DiscordBot?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SatyrFarm/DiscordBot&amp;utm_campaign=Badge_Grade)
 [![GitHub issues](https://img.shields.io/github/issues/SatyrFarm/DiscordBot.svg)](https://github.com/SatyrFarm/DiscordBot/issues)
 [![GitHub stars](https://img.shields.io/github/stars/SatyrFarm/DiscordBot.svg)](https://github.com/SatyrFarm/DiscordBot/stargazers)
 [![GitHub license](https://img.shields.io/github/license/SatyrFarm/DiscordBot.svg)](https://github.com/SatyrFarm/DiscordBot)
