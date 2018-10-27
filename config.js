@@ -10,7 +10,7 @@ const config = {
   "support": [],
 
   //Bot token
-  "token": "NDk0NjcwODk2MzMwNDQwNzA1.DrNoyg.vlmpgRxzU8q7lzMn9kPjPc8-oEA",
+  "token": "",
 
   //Default Server settings
 
