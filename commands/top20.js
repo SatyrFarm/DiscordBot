@@ -49,12 +49,28 @@ const createEmbed = async () => {
   }
 };
 
-module.exports = {
-  name: "top20",
-  description: "Allows you to view the top20 Satyr Farm Players",
-  cooldown: 5,
-  async execute(message) {
-    await createEmbed(); // waits for the embed to be created
+
+
+
+
+exports.run = async (client, message, _args, _level) => { // eslint-disable-line no-unused-vars
+  await createEmbed(); // waits for the embed to be created
     message.channel.send({ embed }); // sends the embed. exactly the same as message.channel.send({embed: embed});
-  }
+
 };
+
+
+exports.conf = {
+  enabled: true,
+  guildOnly: false,
+  aliases: [],
+  permLevel: "User"
+};
+
+exports.help = {
+  name: "top20",
+  category: "Satyr Farm",
+  description: "Shows the top20 Satyr Farm Players",
+  usage: "top20"
+};
+

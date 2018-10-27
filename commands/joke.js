@@ -16,15 +16,27 @@ var JokesArray = [
 
 
 
-module.exports = {
-	name: 'joke',
-	description: 'Tell a random joke',
-	cooldown: 0,
-	execute(message) {
-		var randomJoke = JokesArray[Math.floor(Math.random() * JokesArray.length)];
+exports.run = async (client, message, _args, _level) => { // eslint-disable-line no-unused-vars
+  var randomJoke = JokesArray[Math.floor(Math.random() * JokesArray.length)];
 		
 		message.channel.send(randomJoke);
-	},
+
+
 };
+
+exports.conf = {
+  enabled: true,
+  guildOnly: false,
+  aliases: [],
+  permLevel: "User"
+};
+
+exports.help = {
+  name: "joke",
+  category: "Fun",
+  description: "Tells a cheesy farm joke.....it is dairy free though",
+  usage: "joke"
+};
+
 
 

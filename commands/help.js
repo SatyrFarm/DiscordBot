@@ -1,56 +1,55 @@
 /*
- Copyright 2018 Satyr Farm and Cody Cooper
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+The HELP command is used to display every command's name and description
+to the user, so that he may see what commands are available. The help
+command is also filtered by level, so if a user does not have access to
+a command, it is not shown to them. If a command name is given with the
+help command, its extended help is shown.
 */
 
-const { prefix } = require('../config.json');
+exports.run = (client, message, args, level) => {
+  // If no specific command is called, show all filtered commands.
+  if (!args[0]) {
+    // Filter all commands by which are available for the user's level, using the <Collection>.filter() method.
+    const myCommands = message.guild ? client.commands.filter(cmd => client.levelCache[cmd.conf.permLevel] <= level) : client.commands.filter(cmd => client.levelCache[cmd.conf.permLevel] <= level &&  cmd.conf.guildOnly !== true);
 
-module.exports = {
-	name: 'help',
-	description: 'List all of my commands or info about a specific command.',
-	aliases: ['commands'],
-	usage: '[command name]',
-	cooldown: 5,
-	execute(message, args) {
-		const data = [];
-		const { commands } = message.client;
+    // Here we have to get the command names only, and we use that array to get the longest name.
+    // This make the help commands "aligned" in the output.
+    const commandNames = myCommands.keyArray();
+    const longest = commandNames.reduce((long, str) => Math.max(long, str.length), 0);
 
-		if (!args.length) {
-			data.push('Here\'s a list of all my commands:');
-			data.push(commands.map(command => command.name).join(', '));
-			data.push(`\nYou can send \`${prefix}help [command name]\` to get info on a specific command!`);
+    let currentCategory = "";
+    let output = `= Command List =\n\n[Use ${message.settings.prefix}help <commandname> for details]\n`;
+    const sorted = myCommands.array().sort((p, c) => p.help.category > c.help.category ? 1 :  p.help.name > c.help.name && p.help.category === c.help.category ? 1 : -1 );
+    sorted.forEach( c => {
+      const cat = c.help.category.toProperCase();
+      if (currentCategory !== cat) {
+        output += `\u200b\n== ${cat} ==\n`;
+        currentCategory = cat;
+      }
+      output += `${message.settings.prefix}${c.help.name}${" ".repeat(longest - c.help.name.length)} :: ${c.help.description}\n`;
+    });
+    message.channel.send(output, {code: "asciidoc", split: { char: "\u200b" }});
+  } else {
+    // Show individual command's help.
+    let command = args[0];
+    if (client.commands.has(command)) {
+      command = client.commands.get(command);
+      if (level < client.levelCache[command.conf.permLevel]) return;
+      message.channel.send(`= ${command.help.name} = \n${command.help.description}\nusage:: ${command.help.usage}\naliases:: ${command.conf.aliases.join(", ")}\n= ${command.help.name} =`, {code:"asciidoc"});
+    }
+  }
+};
 
-			return message.author.send(data, { split: true })
-				.then(() => {
-					if (message.channel.type === 'dm') return;
-					message.reply('I\'ve sent you a DM with all my commands!');
-				})
-				.catch(error => {
-					console.error(`Could not send help DM to ${message.author.tag}.\n`, error);
-					message.reply('it seems like I can\'t DM you!');
-				});
-		}
+exports.conf = {
+  enabled: true,
+  guildOnly: false,
+  aliases: ["h", "halp"],
+  permLevel: "User"
+};
 
-		const name = args[0].toLowerCase();
-		const command = commands.get(name) || commands.find(c => c.aliases && c.aliases.includes(name));
-
-		if (!command) {
-			return message.reply('that\'s not a valid command!');
-		}
-
-		data.push(`**Name:** ${command.name}`);
-
-		if (command.aliases) data.push(`**Aliases:** ${command.aliases.join(', ')}`);
-		if (command.description) data.push(`**Description:** ${command.description}`);
-		if (command.usage) data.push(`**Usage:** ${prefix}${command.name} ${command.usage}`);
-
-		data.push(`**Cooldown:** ${command.cooldown || 3} second(s)`);
-
-		message.channel.send(data, { split: true });
-	},
+exports.help = {
+  name: "help",
+  category: "System",
+  description: "Displays all the available commands for your permission level.",
+  usage: "help [command]"
 };

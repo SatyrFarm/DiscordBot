@@ -1,11 +1,36 @@
-# DiscordBot
+# OpenSimWorld/Satyr Farm Discord Bot
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/675ef9c0c17c4b68a9b9bc3f40f1da38)](https://www.codacy.com/app/SatyrFarm/DiscordBot?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SatyrFarm/DiscordBot&amp;utm_campaign=Badge_Grade)
-[![GitHub issues](https://img.shields.io/github/issues/SatyrFarm/DiscordBot.svg)](https://github.com/SatyrFarm/DiscordBot/issues)
-[![GitHub stars](https://img.shields.io/github/stars/SatyrFarm/DiscordBot.svg)](https://github.com/SatyrFarm/DiscordBot/stargazers)
-[![GitHub license](https://img.shields.io/github/license/SatyrFarm/DiscordBot.svg)](https://github.com/SatyrFarm/DiscordBot)
-[![GitHub forks](https://img.shields.io/github/forks/SatyrFarm/DiscordBot.svg)](https://github.com/SatyrFarm/DiscordBot/network/members)
-[![Build Status](https://travis-ci.com/SatyrFarm/DiscordBot.svg?branch=master)](https://travis-ci.com/SatyrFarm/DiscordBot)
-[![Twitter](https://img.shields.io/twitter/url/https/github.com/SatyrFarm/DiscordBot.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2FSatyrFarm%2FDiscordBot)
 
-A Discord Bot made for Satyr Farm, a OpenSimulator System
+------  
+
+
+
+
+This bot has three main features;
+
+1. Moderation tasks for the discord server
+2. User tracking, mini-games, and votes
+3. Interacts with the OpenSimWorld and Satyr Farm API 
+
+
+------  
+## Points System
+
+*Note that one points is equal to one message*
+
+Ranks:
+* Farmhand, **0 and 225 points**
+* Senior Farmhand, **226 and 624 points**
+* Farmer, **625 and 1224 points**
+* Old Wise One, **1224+ points**
+
+------  
+## Points System
+
+We Want to Really be Open and Fair, so we want to make sure we credit [UnOfficialNode.js Discord Server Bot](https://github.com/UnofficialNodejsDiscord/Unofficial-Node.js-Discord-Bot) which we based the 3.0.0 Version and forward off of. We used it and added our commands to it, we take no credit for commands they had on it before we used it. 
+
+------  
+## Help Out
+
+Please see [TODO](https://github.com/SatyrFarm/DiscordBot/blob/master/TODO.md) if you want to help out with this bot!
+
