@@ -29,5 +29,5 @@ exports.help = {
     name: "eventtester",
     category: "System",
     description: "Tests event\'s",
-    usage: "eventtester [event name]"
+    usage: 'eventtester [event name]'
 };
