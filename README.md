@@ -1,5 +1,7 @@
 # OpenSimWorld/Satyr Farm Discord Bot
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/d16b97caf50c4466bd018f5bf960ee77)](https://app.codacy.com/app/SatyrFarm/DiscordBot?utm_source=github.com&utm_medium=referral&utm_content=SatyrFarm/DiscordBot&utm_campaign=Badge_Grade_Dashboard)
+
 
 ------  
 
