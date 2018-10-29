@@ -1,6 +1,6 @@
 exports.run = async (client, message, args, _level) => {
   if (!message.author.id === message.guild.owner) {
-    return message.reply('You need permission to control me!');
+    return message.reply("You need permission to control me!");
   }
 
   const user = message
@@ -53,6 +53,6 @@ exports.conf = {
 exports.help = {
   name: 'give',
   category: 'Level',
-  description: 'Give users a certain amount of points',
+  description: "Give users a certain amount of points",
   usage: 'give [user] [points]',
 };
