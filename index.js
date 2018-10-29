@@ -1,62 +1,62 @@
-const Discord = require("discord.js");
+const Discord = require('discord.js');
 const client = new Discord.Client();
 
-const { promisify } = require("util");
-const readdir = promisify(require("fs").readdir);
+const promisify = require('util');
+const readdir = promisify(require('fs').readdir);
 
-const Enmap = require("enmap");
-const Provider = require("enmap-sqlite");
-const EnmapLevel = require("enmap-level");
+const Enmap = require('enmap');
+const Provider = require('enmap-sqlite');
+const EnmapLevel = require('enmap-level');
 
-client.config = require("./config.js");
-client.logger = require("./util/Logger");
-require("./modules/functions.js")(client);
+client.config = require('./config.js');
+client.logger = require('./util/Logger');
+require('./modules/functions.js')(client);
 
 client.commands = new Enmap();
 client.aliases = new Enmap();
 
 client.settings = new Enmap({
   provider: new EnmapLevel({
-    name: "settings"
+    name: 'settings'
   })
 });
 
 client.points = new Enmap({
   provider: new Provider({
-    name: "points"
+    name: 'points'
   })
 });
 
 client.warns = new Enmap({
   provider: new Provider({
-    name: "warns"
+    name: 'warns'
   })
 });
 
 client.tickets = new Enmap({
   provider: new Provider({
-    name: "tickets"
+    name: 'tickets'
   })
 });
-process.on("unhandledRejection", err => {
+process.on('unhandledRejection', err => {
     client.logger.error(`Unhandled rejection: ${err.stack}`)
   });
 
 const init = async () => {
   //Each of our command files
-  const cmdFiles = await readdir("./commands/");
+  const cmdFiles = await readdir('./commands/');
   cmdFiles.forEach(f => {
-    if (!f.endsWith(".js")) return;
+    if (!f.endsWith('.js')) return;
     const response = client.loadCommand(f);
     if (response) console.log(response);
   });
 
   //Each of our event files
-  const evtFiles = await readdir("./events/");
+  const evtFiles = await readdir('./events/');
   evtFiles.forEach(file => {
-    if (!file.endsWith(".js")) return;
+    if (!file.endsWith('.js')) return;
 
-    const eventName = file.split(".")[0];
+    const eventName = file.split('.')[0];
     const event = require(`./events/${file}`);
 
     const response = client.loadEvent(eventName, event);
