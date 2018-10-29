@@ -1,7 +1,7 @@
 require('dotenv').config();
 const config = {
   // Global bot owner, level 10 is default
-  'ownerID': '',
+  'ownerID': '', 
 
   // Global bot admins, level 9, array of the user ID strings
   'admins': [],
