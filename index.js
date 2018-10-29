@@ -17,25 +17,25 @@ client.aliases = new Enmap();
 
 client.settings = new Enmap({
   provider: new EnmapLevel({
-    name: 'settings',
+    name: 'settings'
   })
 });
 
 client.points = new Enmap({
   provider: new Provider({
-    name: 'points',
+    name: 'points'
   })
 });
 
 client.warns = new Enmap({
   provider: new Provider({
-    name: 'warns',
+    name: 'warns'
   })
 });
 
 client.tickets = new Enmap({
   provider: new Provider({
-    name: 'tickets',
+    name: 'tickets'
   })
 });
 process.on('unhandledRejection', err => {
@@ -43,7 +43,7 @@ process.on('unhandledRejection', err => {
   });
 
 const init = async () => {
-  //Each of our command files
+  // Each of our command files
   const cmdFiles = await readdir('./commands/');
   cmdFiles.forEach(f => {
     if (!f.endsWith('.js')) return;
@@ -51,7 +51,7 @@ const init = async () => {
     if (response) console.log(response);
   });
 
-  //Each of our event files
+  // Each of our event files
   const evtFiles = await readdir('./events/');
   evtFiles.forEach(file => {
     if (!file.endsWith('.js')) return;
@@ -65,7 +65,7 @@ const init = async () => {
     delete require.cache[require.resolve(`./events/${file}`)];
   });
 
-  //Create a cache of our clients permissions
+  // Create a cache of our clients permissions
   client.levelCache = {};
   for (let i = 0; i < client.config.permLevels.length; i++) {
     const thisLevel = client.config.permLevels[i];
