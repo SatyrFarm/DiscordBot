@@ -10,7 +10,6 @@ module.exports = async (client, member, guild, message) => {
     // TODO: In the future use better removal of previous roles
     // TODO: Add automatic role creation
     // FUTURE: Add a prestige funciton for staff, but only based off of points that users approve, ie. +approve <User> and it boosts their points. Has to be low points
-    
     // BUG: This is not working
     // Exempt ranks
     if (member.roles.find('name', 'sf-developer') || member.roles.find('name', 'Moderator') || member.roles.find('name', 'Administrator')) return;
@@ -29,26 +28,30 @@ module.exports = async (client, member, guild, message) => {
       member.removeRole(guild.roles.find((role) => role.name == 'Old Wise One'));
     }
 
-        // Ensure they already have the role
-        if (member.roles.find('name', 'Farmhand')) return;
-
-        // Add Farmhand role
-        member.addRole(guild.roles.find(role => role.name === 'Farmhand'));
+    // Ensure they already have the role
+    if (member.roles.find('name', 'Farmhand')) {
+      return;
+    }
+       
+    // Add Farmhand role
+    member.addRole(guild.roles.find((role) => role.name === 'Farmhand'));
 
     } else if (level > 3 && level <= 5) {
         // Senior Farmhand, 225 - 624
 
-        // Check if user already has the role
-        if (member.roles.find('name', 'Senior Farmhand')) return;
-
+    // Ensure they already have the role
+    if (member.roles.find('name', 'Senior Farmhand')) {
+      return;
+    }
         // Remove previous role
         if (member.roles.find('name', 'Farmhand')) member.removeRole(guild.roles.find(role => role.name === 'Farmhand'));
 
-        // Add Senior Farmhand role
-        member.addRole(guild.roles.find(role => role.name === 'Senior Farmhand'));
-
+        
+    // Add Senior Farmhand role
+    member.addRole(guild.roles.find((role) => role.name === 'Senior Farmhand'));
+        
         if (message) return message.reply(`You have leveled up to the next rank, **Senior Farmhand**! Congratulations!`);
-
+        
     } else if (level > 5 && level <= 7) {
         // Farmer, 625-1224
 
@@ -59,9 +62,10 @@ module.exports = async (client, member, guild, message) => {
         if (member.roles.find('name', 'Farmhand')) member.removeRole(guild.roles.find(role => role.name === 'Farmhand'));
         if (member.roles.find('name', 'Senior Farmhand')) member.removeRole(guild.roles.find(role => role.name == 'Senior Farmhand'));
 
-        // Add Farmer role
-        member.addRole(guild.roles.find(role => role.name === 'Farmer'));
-
+       
+    // Add Intern role
+    member.addRole(guild.roles.find((role) => role.name === 'Intern'));
+        
         if (message) return message.reply(`You have leveled up to the next rank, **Farmer**! Congratulations!`);
 
 
