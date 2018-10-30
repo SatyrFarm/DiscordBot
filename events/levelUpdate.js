@@ -10,7 +10,7 @@ module.exports = async (client, member, guild, message) => {
     // TODO: In the future use better removal of previous roles
     // TODO: Add automatic role creation
     // FUTURE: Add a prestige funciton for staff, but only based off of points that users approve, ie. +approve <User> and it boosts their points. Has to be low points
-   
+    
     // BUG: This is not working
     // Exempt ranks
     if (member.roles.find('name', 'sf-developer') || member.roles.find('name', 'Moderator') || member.roles.find('name', 'Administrator')) return;
@@ -19,13 +19,17 @@ module.exports = async (client, member, guild, message) => {
     if (level <= 3) {
         // Farmhand < 225
 
-        // Remove higher role
-        if (member.roles.find('name', 'Senior Farmhand')) member.removeRole(guild.roles.find(role => role.name == 'Senior Farmhand'));
-        if (member.roles.find('name', 'Farmer')) member.removeRole(guild.roles.find(role => role.name == 'Farmer'));
-        if (member.roles.find('name', 'Old Wise One')) member.removeRole(guild.roles.find(role => role.name == 'Old Wise One'));
+    if (member.roles.find('name', 'Senior Farmhand')) {
+      member.removeRole(guild.roles.find((role) => role.name == 'Senior Farmhand'));
+    }
+    if (member.roles.find('name', 'Farmer')) {
+      member.removeRole(guild.roles.find((role) => role.name == 'Farmer'));
+    }
+    if (member.roles.find('name', 'Old Wise One')) {
+      member.removeRole(guild.roles.find((role) => role.name == 'Old Wise One'));
+    }
 
-
-        //Ensure they already have the role
+        // Ensure they already have the role
         if (member.roles.find('name', 'Farmhand')) return;
 
         // Add Farmhand role
