@@ -1,7 +1,7 @@
 # OpenSimWorld/Satyr Farm Discord Bot
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/c8404acbf91c413da39e3ff3c30a9466)](https://www.codacy.com/app/SatyrFarm/DiscordBot?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SatyrFarm/DiscordBot&amp;utm_campaign=Badge_Grade)
-
+[![Build Status](https://travis-ci.com/SatyrFarm/DiscordBot.svg?branch=master)](https://travis-ci.com/SatyrFarm/DiscordBot)
 ------  
 
 
