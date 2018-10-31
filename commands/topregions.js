@@ -28,7 +28,7 @@ const embed = new RichEmbed()
   .addBlankField()
   .setTimestamp()
   .setFooter(
-    "Statistics are up to date as of: "
+    'Statistics are up to date as of:'
   );
 
 const createEmbed = async () => {
@@ -37,11 +37,11 @@ const createEmbed = async () => {
     const regions = JSON.parse(body); // Regions are Parsed
     regions.forEach((region, i) => { // loop regions
       if (i > 17) return; // since the index is 0-filed, it will start at 0 and go to 19 for 20 regions
-      var{ title, total_avis, url } = region; // destructures the region object into title and avatars
+      var {title,totalavis,url } = region; // destructures the region object into title and avatars and urls
       
       embed.addField(
         title,
-        "["+ total_avis +" avatars](https://opensimworld.com"+ url +")",
+        "["+ totalavis +" avatars]('https://opensimworld.com'+ url +")",
         true
       );
     });
