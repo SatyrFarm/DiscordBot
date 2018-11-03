@@ -45,8 +45,8 @@ const createEmbed = async () => {
     const users = JSON.parse(body); // users will be the parsed body
     users.forEach((user, i) => { // loops through all the users
       if (i > 19) return; // since the index is 0-filed, it will start at 0 and go to 19 for 20 users
-      const { username, display_name, farmPoints } = user; // destructures the user object into username, display_name, and points
-      const name = display_name ? display_name : username; // if there is a display_name show that, if not show username
+      const {username, displayName, farmPoints} = user; // destructures the user object into username, display_name, and points
+      const name = displayName ? display_name : username; // if there is a display_name show that, if not show username
       embed.addField(
         name,
         farmPoints.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") // adds commas for numbers
