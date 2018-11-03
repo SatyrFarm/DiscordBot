@@ -17,7 +17,7 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-var JokesArray = [
+let JokesArray = [
 'What do you call a cow with no legs? Ground beef',
 'What do you call a sleeping bull? A Bulldozer.',
 'What did the mama cow say to the baby cow? It is pasture bedtime.',
@@ -25,7 +25,7 @@ var JokesArray = [
 
 
 exports.run = async (client, message, _args, _level) => { // eslint-disable-line no-unused-vars
-var randomJoke = JokesArray[Math.floor(Math.random() * JokesArray.length)];
+let randomJoke = JokesArray[Math.floor(Math.random() * JokesArray.length)];
 message.channel.send(randomJoke);
 };
 
@@ -33,14 +33,14 @@ exports.conf = {
 enabled: true,
 guildOnly: false,
 aliases: [],
-permLevel: "User"
+permLevel: "User",
 };
 
 exports.help = {
 name: "joke",
 category: "Fun",
 description: "Tells a cheesy farm joke.....it is dairy free though",
-usage: "joke"
+usage: "joke",
 };
 
 
