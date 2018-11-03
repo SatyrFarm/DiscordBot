@@ -24,11 +24,12 @@ const embed = new RichEmbed()
   .setColor("#0099ff")
   .setTitle("Popular Regions from OpenSimWorld")
   .setURL("https://opensimworld.com")
-  .setAuthor("Popular Regions right now")
+  .setAuthor("Satyr Farm Statistics")
+  .setDescription("These are the most popular regions in OpenSimWorld")
   .addBlankField()
   .setTimestamp()
   .setFooter(
-    'Statistics are up to date as of:'
+    "Statistics are up to date as of the this timestamp"
   );
 
 const createEmbed = async () => {
@@ -36,12 +37,12 @@ const createEmbed = async () => {
     const body = await request("http://opensimworld.com/gateway/get.json?cmd=popular"); // body is the body of the request
     const regions = JSON.parse(body); // Regions are Parsed
     regions.forEach((region, i) => { // loop regions
-      if (i > 17) return; // since the index is 0-filed, it will start at 0 and go to 19 for 20 regions
-      var {title,totalavis,url } = region; // destructures the region object into title and avatars and urls
+      if (i > 19) return; // since the index is 0-filed, it will start at 0 and go to 19 for 20 regions
+      var{ title, total_avis } = region; // destructures the region object into title and avatars
       
       embed.addField(
         title,
-        "["+ totalavis +" avatars]('https://opensimworld.com'+ url +")",
+        total_avis,
         true
       );
     });
@@ -76,4 +77,3 @@ exports.help = {
   description: "Shows the most popular regions according to OpenSimWorld",
   usage: "topregions"
 };
-
