@@ -17,31 +17,31 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-const { RichEmbed } = require("discord.js"); // Getting RichEmbed from discord.js. Same as Discord.RichEmbed()
-const request = require("request-promise"); // A new async request module
+const {RichEmbed } = require('discord.js'); // Getting RichEmbed from discord.js. Same as Discord.RichEmbed()
+const request = require('request-promise'); // A new async request module
 
 const embed = new RichEmbed()
-  .setColor("#0099ff")
-  .setTitle("Satyr Far Top20")
-  .setURL("https://satyrfarm.github.io")
+  .setColor('#0099ff')
+  .setTitle('Satyr Far Top20')
+  .setURL('https://satyrfarm.github.io')
   .setAuthor(
-    "Satyr Farm Statistics",
-    "https://opensimworld.com/css/sflogo.png",
-    "https://discord.js.org"
+    'Satyr Farm Statistics',
+    'https://opensimworld.com/css/sflogo.png',
+    'https://discord.js.org'
   )
-  .setDescription("As of now")
-  .setThumbnail("https://opensimworld.com/css/sflogo.png")
+  .setDescription('As of now')
+  .setThumbnail('https://opensimworld.com/css/sflogo.png')
   .addBlankField()
-  .setImage("https://opensimworld.com/css/sflogo.png")
+  .setImage('https://opensimworld.com/css/sflogo.png')
   .setTimestamp()
   .setFooter(
-    "Statistics are up to date as of the this timestamp",
-    "https://opensimworld.com/css/sflogo.png"
+    'Statistics are up to date as of the this timestamp',
+    'https://opensimworld.com/css/sflogo.png'
   );
 
 const createEmbed = async () => {
   try {
-    const body = await request("https://opensimworld.com/farmstats/top.json"); // body is the body of the request
+    const body = await request('https://opensimworld.com/farmstats/top.json'); // body is the body of the request
     const users = JSON.parse(body); // users will be the parsed body
     users.forEach((user, i) => { // loops through all the users
       if (i > 19) return; // since the index is 0-filed, it will start at 0 and go to 19 for 20 users
@@ -74,13 +74,13 @@ exports.conf = {
   enabled: true,
   guildOnly: false,
   aliases: [],
-  permLevel: "User"
+  permLevel: 'User',
 };
 
 exports.help = {
-  name: "top20",
-  category: "Satyr Farm",
-  description: "Shows the top20 Satyr Farm Players",
-  usage: "top20"
+  name: 'top20',
+  category: 'Satyr Farm',
+  description: 'Shows the top20 Satyr Farm Players',
+  usage: 'top20',
 };
 
