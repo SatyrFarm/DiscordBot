@@ -7,9 +7,6 @@ module.exports = (client) => {
     if (message.channel.type !== 'text') {
       return;
     }
-    const settings = client
-      .settings
-      .get(message.guild.id);
     const score = client
       .points
       .get(message.author.id) || {
