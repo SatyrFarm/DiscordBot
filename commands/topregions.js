@@ -36,7 +36,7 @@ const createEmbed = async () => {
     const regions = JSON.parse(body); // Regions are Parsed
     regions.forEach((region, i) => { // loop regions
       if (i > 19) return; // since the index is 0-filed, it will start at 0 and go to 19 for 20 regions
-      let{title, totalAvis} = region; // destructures the region object into title and avatars
+      let {title, totalAvis} = region; // destructures the region object into title and avatars
       
       embed.addField(
         title,
