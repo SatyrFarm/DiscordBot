@@ -28,7 +28,7 @@ module.exports = (client, member) => {
   }
 };
 /**
- * Sends a welcome message to the user who joined 
+ * Sends a welcome message to the user who joined
  * @param {object} user
  * @param {object} client
  */
