@@ -33,14 +33,14 @@ exports.conf = {
 enabled: true,
 guildOnly: false,
 aliases: [],
-permLevel: "User",
+permLevel: 'User',
 };
 
 exports.help = {
-name: "joke",
-category: "Fun",
-description: "Tells a cheesy farm joke.....it is dairy free though",
-usage: "joke",
+name: 'joke',
+category: 'Fun',
+description: 'Tells a cheesy farm joke.....it is dairy free though',
+usage: 'joke',
 };
 
 
