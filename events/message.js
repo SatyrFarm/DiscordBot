@@ -51,7 +51,7 @@ module.exports = async (client, message) => {
     }
 
     return;
-  };
+  }
 
   // Here we separate our "command" name, and our "arguments" for the command.
   // e.g. if we have the message "+say Is this the real life?" , we'll get the following:
