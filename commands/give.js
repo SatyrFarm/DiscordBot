@@ -53,6 +53,6 @@ exports.conf = {
 exports.help = {
   name: 'give',
   category: 'Level',
-  description: "Give users a certain amount of points",
+  description: 'Give users a certain amount of points',
   usage: 'give [user] [points]',
 };
