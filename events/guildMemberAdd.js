@@ -35,7 +35,9 @@ module.exports = (client, member) => {
 function pmUserRules(user, client) {
   user.send(`Welcome to our Discord Server, The SatyrFarm/OpenSimWorld Discord Server!
 -----
-Before you start jumping into different rooms and such, go to the bottom left of the webpage/desktop app and click that gear on the bottom left! In there, change your display picture, and whatever settings you may think should be changed. We highly recommend you enable Push To Talk, it'll just help those in the same voice channels if you have a lot of background noise.
+Before you start jumping into different rooms and such, go to the bottom left of the webpage/desktop app and
+click that gear on the bottom left! In there, change your display picture, and whatever settings you may think should be changed. 
+We highly recommend you enable Push To Talk, it'll just help those in the same voice channels if you have a lot of background noise.
 ----
 Now, for the serious part.
 -----
