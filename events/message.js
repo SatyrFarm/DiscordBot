@@ -3,16 +3,12 @@
 // goes `client, other, args` when this function is run.
 
 module.exports = async (client, message) => {
-
   const settings = message.settings = client.getGuildSettings(message.guild)
 
-
-
-  if(message.member.roles.find("name", "muted")) {
+  if(message.member.roles.find('name', 'muted')) {
     message.delete();
     return;
   }
-
   // Also good practice to ignore any message that does not start with our prefix,
   // which is set in the configuration file.
   if (message.content.indexOf(settings.prefix) !== 0) {
@@ -29,34 +25,34 @@ module.exports = async (client, message) => {
       });
     }
 
-    let currentPoints = client.points.getProp(key, "points");
-    client.points.setProp(key, "points", ++currentPoints);
+    let currentPoints = client.points.getProp(key, 'points');
+    client.points.setProp(key, 'points', ++currentPoints);
 
-    const userPoints = parseInt(client.points.getProp(key, "points"), 10);
+    const userPoints = parseInt(client.points.getProp(key,''points'), 10);
     const curLevel = Math.floor(0.25 * Math.sqrt(currentPoints));
 
-    const userLevel = parseInt(client.points.getProp(key, "level"), 10);
+    const userLevel = parseInt(client.points.getProp(key, 'level'), 10);
 
 
 
 
-    client.emit("levelUpdate", message.member, message.guild, message);
+    client.emit('levelUpdate', message.member, message.guild, message);
 
 
 
     if (userLevel !== curLevel) {
 
-      client.points.setProp(key, "level", curLevel);
+      client.points.setProp(key, 'level', curLevel);
       message.reply(`You have leveled up to level **${curLevel}**! Congratulations!`);
     }
 
     return;
   }
 
-  // Here we separate our "command" name, and our "arguments" for the command.
-  // e.g. if we have the message "+say Is this the real life?" , we'll get the following:
+  // Here we separate our 'command' name, and our 'arguments' for the command.
+  // e.g. if we have the message '+say Is this the real life?' , we'll get the following:
   // command = say
-  // args = ["Is", "this", "the", "real", "life?"]
+  // args = ['Is', 'this', 'the', 'real', 'life?']
   const args = message.content.slice(settings.prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
 
@@ -73,10 +69,10 @@ module.exports = async (client, message) => {
   // Some commands may not be useable in DMs. This check prevents those commands from running
   // and return a friendly error message.
   if (cmd && !message.guild && cmd.conf.guildOnly)
-    return message.channel.send("This command is unavailable via private message. Please run this command in a guild.");
+    return message.channel.send('This command is unavailable via private message. Please run this command in a guild.');
 
   if (level < client.levelCache[cmd.conf.permLevel]) {
-    if (settings.systemNotice === "true") {
+    if (settings.systemNotice === 'true') {
       return message.channel.send(`You do not have permission to use this command.
   Your permission level is ${level} (${client.config.permLevels.find(l => l.level === level).name})
   This command requires level ${client.levelCache[cmd.conf.permLevel]} (${cmd.conf.permLevel})`);
@@ -87,11 +83,11 @@ module.exports = async (client, message) => {
 
 
   // To simplify message arguments, the author's level is now put on level (not member so it is supported in DMs)
-  // The "level" command module argument will be deprecated in the future.
+  // The 'level' command module argument will be deprecated in the future.
   message.author.permLevel = level;
 
   message.flags = [];
-  while (args[0] && args[0][0] === "-") {
+  while (args[0] && args[0][0] === '-') {
     message.flags.push(args.shift().slice(1));
   }
   // If the command exists, **AND** the user has permission, run it.
