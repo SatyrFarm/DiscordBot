@@ -17,7 +17,7 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-const {RichEmbed } = require('discord.js'); // Getting RichEmbed from discord.js. Same as Discord.RichEmbed()
+const {RichEmbed} = require('discord.js'); // Getting RichEmbed from discord.js. Same as Discord.RichEmbed()
 const request = require('request-promise'); // A new async request module
 const embed = new RichEmbed()
   .setColor('#0099ff')
@@ -37,7 +37,6 @@ const createEmbed = async () => {
     regions.forEach((region, i) => { // loop regions
       if (i > 19) return; // since the index is 0-filed, it will start at 0 and go to 19 for 20 regions
       let {title, totalAvis} = region; // destructures the region object into title and avatars
-      
       embed.addField(
         title,
         totalAvis,
@@ -52,8 +51,7 @@ const createEmbed = async () => {
 };
 exports.run = async (client, message, _args, _level) => { // eslint-disable-line no-unused-vars
   await createEmbed(); // waits for the embed to be created
-    message.channel.send({ embed }); // sends the embed. exactly the same as message.channel.send({embed: embed});
-
+    message.channel.send({embed}); // sends the embed. exactly the same as message.channel.send({embed: embed});
 };
 exports.conf = {
   enabled: true,
