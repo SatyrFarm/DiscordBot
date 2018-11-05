@@ -37,7 +37,7 @@ module.exports = async (client, member, guild, message) => {
       return;
     }
         // Remove previous role
-        if (member.roles.find('name', 'Farmhand')) member.removeRole(guild.roles.find(role => role.name === 'Farmhand'));   
+        if (member.roles.find('name', 'Farmhand')) member.removeRole(guild.roles.find(role => role.name === 'Farmhand'));
     // Add Senior Farmhand role
     member.addRole(guild.roles.find((role) => role.name === 'Senior Farmhand'));
         if (message) return message.reply(`You have leveled up to the next rank, **Senior Farmhand**! Congratulations!`);
