@@ -42,6 +42,3 @@ category: 'Fun',
 description: 'Tells a cheesy farm joke.....it is dairy free though',
 usage: 'joke',
 };
-
-
-
