@@ -16,26 +16,21 @@ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMA
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-
 let JokesArray = [
 'What do you call a cow with no legs? Ground beef',
 'What do you call a sleeping bull? A Bulldozer.',
 'What did the mama cow say to the baby cow? It is pasture bedtime.',
 ];
-
-
 exports.run = async (client, message, _args, _level) => { // eslint-disable-line no-unused-vars
 let randomJoke = JokesArray[Math.floor(Math.random() * JokesArray.length)];
 message.channel.send(randomJoke);
 };
-
 exports.conf = {
 enabled: true,
 guildOnly: false,
 aliases: [],
 permLevel: 'User',
 };
-
 exports.help = {
 name: 'joke',
 category: 'Fun',
