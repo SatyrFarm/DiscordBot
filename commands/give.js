@@ -1,6 +1,6 @@
 exports.run = async (client, message, args, _level) => {
   if (!message.author.id === message.guild.owner) {
-    return message.reply("You need permission to control me!");
+    return message.reply('You need permission to control me!');
   }
 
   const user = message
