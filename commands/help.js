@@ -24,7 +24,7 @@ exports.run = (client, message, args, level) => {
     const commandNames = myCommands.keyArray();
     const longest = commandNames.reduce((long, str) => Math.max(long, str.length), 0);
 
-    let currentCategory = "";
+    let currentCategory = '';
     let output = `= Command List =\n\n[Use ${message.settings.prefix}help <commandname> for details]\n`;
     const sorted = myCommands
       .array()
