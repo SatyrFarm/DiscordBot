@@ -1,7 +1,7 @@
 require('dotenv').config();
 const config = {
   // Global bot owner, level 10 is default
-  'ownerID': '', 
+  'ownerID': '478280993422442497', 
 
   // Global bot admins, level 9, array of the user ID strings
   'admins': [],
@@ -11,6 +11,9 @@ const config = {
 
   // Bot token
   'token': '',
+
+// Sentry.io DSN
+  'sentrydsn': '',
 
   // Default Server settings
 
@@ -24,7 +27,7 @@ const config = {
     'welcomeMessage': 'Say hello to {{user}}, everyone!',
     'welcomeEnabled': 'false',
     'openTicketsId': 'undefined',
-    'closedTicketsId": 'undefined',
+    'closedTicketsId': 'undefined',
   },
 
   // Permission Level Definitions

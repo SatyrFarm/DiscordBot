@@ -11,6 +11,8 @@ const EnmapLevel = require('enmap-level');
 client.config = require('./config.js');
 client.logger = require('./util/Logger');
 require('./modules/functions.js')(client);
+const Sentry = require('@sentry/node');
+Sentry.init({ dsn: client.config.sentrydsn});
 
 client.commands = new Enmap();
 client.aliases = new Enmap();
