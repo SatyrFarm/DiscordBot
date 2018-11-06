@@ -38,9 +38,6 @@ client.tickets = new Enmap({
     name: 'tickets',
   })
 });
-process.on('unhandledRejection', err => {
-    client.logger.error(`Unhandled rejection: ${err.stack}`)
-  });
 
 const init = async () => {
   // Each of our command files
