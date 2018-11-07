@@ -1,7 +1,7 @@
 require('dotenv').config();
 const config = {
   // Global bot owner, level 10 is default
-  'ownerID': '478280993422442497', 
+  'ownerID': '478280993422442497',
 
   // Global bot admins, level 9, array of the user ID strings
   'admins': [],
@@ -31,7 +31,7 @@ const config = {
   },
 
   // Permission Level Definitions
-  permLevels: [
+  'permLevels': [
     // 0 to 10, 0 being the lowest
     {
       level: 0,
