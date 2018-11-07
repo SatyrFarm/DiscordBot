@@ -5,9 +5,11 @@ const config = {
 
   // Global bot admins, level 9, array of the user ID strings
   'admins': [],
+  
 
   // Bot Support, level 8
   'support': [],
+  
 
   // Bot token
   'token': '',
