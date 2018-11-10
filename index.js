@@ -20,25 +20,25 @@ client.aliases = new Enmap();
 client.settings = new Enmap({
   provider: new EnmapLevel({
     name: 'settings',
-  })
+  }),
 });
 
 client.points = new Enmap({
   provider: new Provider({
     name: 'points',
-  })
+  }),
 });
 
 client.warns = new Enmap({
   provider: new Provider({
     name: 'warns',
-  })
+  }),
 });
 
 client.tickets = new Enmap({
   provider: new Provider({
     name: 'tickets',
-  })
+  }),
 });
 
 const init = async () => {
