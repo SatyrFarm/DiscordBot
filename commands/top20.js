@@ -60,7 +60,7 @@ const createEmbed = async () => {
 };
 exports.run = async (client, message, _args, _level) => { // eslint-disable-line no-unused-vars
   await createEmbed(); // waits for the embed to be created
-    message.channel.send({embed }); // sends the embed. exactly the same as message.channel.send({embed: embed});
+    message.channel.send(embed); // sends the embed. exactly the same as message.channel.send({embed: embed});
 };
 exports.conf = {
   enabled: true,
