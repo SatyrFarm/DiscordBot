@@ -10,20 +10,20 @@ module.exports = async (client, oldMessage, newMessage) => {
 
     let logs = oldMessage.guild.channels.find('name', 'logging');
 
-    let embed = new Discord.RichEmbed().setTitle("Message Update").setAuthor(client.user.username, client.user.avatarURL).setColor(0xff268f);
-    embed.addField("User", old.author.username + "#" + old.author.discriminator);
-    embed.addField("Old", old.content);
-    embed.addField("New", new_.content);
+    let embed = new Discord.RichEmbed().setTitle('Message Update').setAuthor(client.user.username, client.user.avatarURL).setColor(0xff268f);
+    embed.addField('User', old.author.username + '#' + old.author.discriminator);
+    embed.addField('Old', old.content);
+    embed.addField('New', new_.content);
 
     let currentdate = new Date();
-    let datetime = currentdate.getDate() + "/" +
-        (currentdate.getMonth() + 1) + "/" +
-        currentdate.getFullYear() + " @ " +
-        currentdate.getHours() + ":" +
-        currentdate.getMinutes() + ":" +
+    let datetime = currentdate.getDate() + '/' +
+        (currentdate.getMonth() + 1) + '/"' +
+        currentdate.getFullYear() + ' @ ' +
+        currentdate.getHours() + ':' +
+        currentdate.getMinutes() + ':' +
         currentdate.getSeconds();
 
-    embed.addField("Time", datetime);
+    embed.addField('Time', datetime);
 
     logs.send(embed);
 };
