@@ -5,7 +5,7 @@ const config = {
 
   // Global bot admins, level 9, array of the user ID strings
   'admins': [],
-  
+
 
   // Bot Support, level 8
   'support': [],
@@ -31,14 +31,13 @@ const config = {
     'openTicketsId': 'undefined',
     'closedTicketsId': 'undefined',
   },
-
   // Permission Level Definitions
   'permLevels': [
     // 0 to 10, 0 being the lowest
     {
       level: 0,
       name: 'User',
-      check: () => true
+      check: () => true,
     },
 
     // From this permission level or higher should be for staff only
@@ -47,58 +46,75 @@ const config = {
       name: 'Moderator',
       check: (message) => {
         try {
-          const modRole = message.guild.roles.find(r => r.name.toLowerCase() === message.settings.modRole.toLowerCase());
-          if (modRole && message.member.roles.has(modRole.id)) return true;
+          const modRole = message
+            .guild
+            .roles
+            .find((r) => r.name.toLowerCase() === message.settings.modRole.toLowerCase());
+          if (modRole && message.member.roles.has(modRole.id)) {
+            return true;
+          }
         } catch (e) {
           return false;
         }
-      }
-
-    },
-    {
+      },
+    }, {
       level: 3,
       name: 'Administrator',
       check: (message) => {
         try {
-          const adminRole = message.guild.roles.find(r => r.name.toLowerCase() === message.settings.adminRole.toLowerCase());
+          const adminRole = message
+            .guild
+            .roles
+            .find((r) => r.name.toLowerCase() === message.settings.adminRole.toLowerCase());
           return (adminRole && message.member.roles.has(adminRole.id));
         } catch (e) {
           return false;
         }
-      }
-    },
-    {
+      },
+    }, {
       level: 4,
       name: 'Server Owner',
-      check: (message) => message.channel.type === 'text' ? (message.guild.owner.user.id === message.author.id ? true : false) : false
+      check: (message) => message.channel.type === 'text'
+        ? (message.guild.owner.user.id === message.author.id
+          ? true
+          : false)
+        : false,
     },
-    // Bot Support is a special inbetween level that has the equivalent of server owner access
-    // to any server they joins, in order to help troubleshoot the bot on behalf of owners.
+    // Bot Support is a special inbetween level that has the equivalent of server
+    // owner access to any server they joins, in order to help troubleshoot the bot
+    // on behalf of owners.
     {
       level: 8,
       name: 'Bot Support',
-      // The check is by reading if an ID is part of this array. Yes, this means you need to
-      // change this and reboot the bot to add a support user. Make it better yourself!
-      check: (message) => config.support.includes(message.author.id)
+      // The check is by reading if an ID is part of this array. Yes, this means you
+      // need to change this and reboot the bot to add a support user. Make it better
+      // yourself!
+      check: (message) => config
+        .support
+        .includes(message.author.id),
     },
 
-    // Bot Admin has some limited access like rebooting the bot or reloading commands.
+    // Bot Admin has some limited access like rebooting the bot or reloading
+    // commands.
     {
       level: 9,
       name: 'Bot Admin',
-      check: (message) => config.admins.includes(message.author.id)
+      check: (message) => config
+        .admins
+        .includes(message.author.id),
     },
 
     // This is the bot owner, this should be the highest permission level available.
-    // The reason this should be the highest level is because of dangerous commands such as eval
-    // or exec (if the owner has that).
+    // The reason this should be the highest level is because of dangerous commands
+    // such as eval or exec (if the owner has that).
     {
       level: 10,
       name: 'Bot Owner',
-      // Another simple check, compares the message author id to the one stored in the config file.
-      check: (message) => message.client.config.ownerID === message.author.id
-    }
-  ]
-}
+      // Another simple check, compares the message author id to the one stored in the
+      // config file.
+      check: (message) => message.client.config.ownerID === message.author.id,
+    },
+  ],
+};
 
 module.exports = config;
