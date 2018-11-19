@@ -11,6 +11,8 @@ const EnmapLevel = require('enmap-level');
 client.config = require('./config.js');
 client.logger = require('./util/Logger');
 require('./modules/functions.js')(client);
+const Sentry = require('@sentry/node');
+Sentry.init({dsn: client.config.sentrydsn});
 
 client.commands = new Enmap();
 client.aliases = new Enmap();
@@ -18,29 +20,26 @@ client.aliases = new Enmap();
 client.settings = new Enmap({
   provider: new EnmapLevel({
     name: 'settings',
-  })
+  }),
 });
 
 client.points = new Enmap({
   provider: new Provider({
     name: 'points',
-  })
+  }),
 });
 
 client.warns = new Enmap({
   provider: new Provider({
     name: 'warns',
-  })
+  }),
 });
 
 client.tickets = new Enmap({
   provider: new Provider({
     name: 'tickets',
-  })
+  }),
 });
-process.on('unhandledRejection', err => {
-    client.logger.error(`Unhandled rejection: ${err.stack}`)
-  });
 
 const init = async () => {
   // Each of our command files

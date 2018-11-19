@@ -17,63 +17,51 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-const { RichEmbed } = require("discord.js"); // Getting RichEmbed from discord.js. Same as Discord.RichEmbed()
-const request = require("request-promise"); // A new async request module
-
+const {RichEmbed} = require('discord.js'); // Getting RichEmbed from discord.js. Same as Discord.RichEmbed()
+const request = require('request-promise'); // A new async request module
 const embed = new RichEmbed()
-  .setColor("#0099ff")
-  .setTitle("Popular Regions from OpenSimWorld")
-  .setURL("https://opensimworld.com")
-  .setAuthor("Satyr Farm Statistics")
-  .setDescription("These are the most popular regions in OpenSimWorld")
+  .setColor('#0099ff')
+  .setTitle('Popular Regions from OpenSimWorld')
+  .setURL('https://opensimworld.com')
+  .setAuthor('Satyr Farm Statistics')
+  .setDescription('These are the most popular regions in OpenSimWorld')
   .addBlankField()
   .setTimestamp()
   .setFooter(
-    "Statistics are up to date as of the this timestamp"
+    'Statistics are up to date as of the this timestamp'
   );
-
 const createEmbed = async () => {
   try {
-    const body = await request("http://opensimworld.com/gateway/get.json?cmd=popular"); // body is the body of the request
+    const body = await request('http://opensimworld.com/gateway/get.json?cmd=popular'); // body is the body of the request
     const regions = JSON.parse(body); // Regions are Parsed
     regions.forEach((region, i) => { // loop regions
       if (i > 19) return; // since the index is 0-filed, it will start at 0 and go to 19 for 20 regions
-      var{ title, total_avis } = region; // destructures the region object into title and avatars
-      
+      let {title, totalAvis} = region; // destructures the region object into title and avatars
       embed.addField(
         title,
-        total_avis,
+        totalAvis,
         true
       );
     });
   } catch (e) {
     console.log(
-      `Failure loading "http://opensimworld.com/farmstats/top.json". Error: ${e}` // if the request returns anything but code: 200
+      `Failure loading 'http://opensimworld.com/farmstats/top.json'. Error: ${e}` // if the request returns anything but code: 200
     );
   }
 };
-
-
-
-
-
 exports.run = async (client, message, _args, _level) => { // eslint-disable-line no-unused-vars
   await createEmbed(); // waits for the embed to be created
-    message.channel.send({ embed }); // sends the embed. exactly the same as message.channel.send({embed: embed});
-
+    message.channel.send({embed}); // sends the embed. exactly the same as message.channel.send({embed: embed});
 };
-
-
 exports.conf = {
   enabled: true,
   guildOnly: false,
   aliases: [],
-  permLevel: "User"
+  permLevel: 'User',
 };
-
 exports.help = {
-  name: "topregions",
-  category: "OpenSimWorld",
-  description: "Shows the most popular regions according to OpenSimWorld",
-  usage: "topregions"
+  name: 'topregions',
+  category: 'OpenSimWorld',
+  description: 'Shows the most popular regions according to OpenSimWorld',
+  usage: 'topregions',
 };
