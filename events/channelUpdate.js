@@ -1,23 +1,14 @@
 // This event executes when a message is deleted
 const Discord = require('discord.js');
 
-String.prototype.toProperCase = function() {
-  return this.replace(/\w\S*/g, function(txt) {
-    return txt
-      .charAt(0)
-      .toUpperCase() + txt
-      .substr(1)
-      .toLowerCase();
-  });
-};
+
 
 function parseChange(message) {
   if (!message) {
     return message;
   }
   return message
-    .replace(/_/g, ' ')
-    .toProperCase();
+    .replace(/_/g, ' ');
 }
 
 // FUTURE: This will help parse the permissions when added

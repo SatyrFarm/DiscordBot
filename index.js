@@ -35,12 +35,6 @@ client.warns = new Enmap({
   }),
 });
 
-client.tickets = new Enmap({
-  provider: new Provider({
-    name: 'tickets',
-  }),
-});
-
 const init = async () => {
   // Each of our command files
   const cmdFiles = await readdir('./commands/');
