@@ -1,4 +1,5 @@
 // This event executes when a message is deleted
+// It doesn't always work
 const Discord = require('discord.js');
 
 // BUG: On link post it updates the post to add the embed and triggers this event
