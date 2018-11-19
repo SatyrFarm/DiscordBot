@@ -28,7 +28,7 @@ module.exports = async (client, message) => {
     let currentPoints = client.points.getProp(key, 'points');
     client.points.setProp(key, 'points', ++currentPoints);
 
-    const userPoints = parseInt(client.points.getProp(key, 'points'), 10);
+  
     const curLevel = Math.floor(0.25 * Math.sqrt(currentPoints));
 
     const userLevel = parseInt(client.points.getProp(key, 'level'), 10);
