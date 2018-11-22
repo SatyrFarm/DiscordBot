@@ -9,7 +9,6 @@ const config = {
 
   // Bot Support, level 8
   'support': [],
-  
 
   // Bot token
   'token': '',
