@@ -1,7 +1,8 @@
+
 // This event executes when a message is deleted
 const Discord = require('discord.js');
 
-String.prototype.toProperCase = function() {
+var toProperCase = function() {
   return this.replace(/\w\S*/g, function(txt) {
     return txt
       .charAt(0)
@@ -12,9 +13,10 @@ String.prototype.toProperCase = function() {
 };
 
 function parseGuildChange(message) {
-  return message
-    .replace(/_/g, ' ')
-    .toProperCase();
+  var own = message;
+  var own2 = own.replace(/_/g, ' ');
+  var message = own2.toProperCase();
+  return message;
 }
 
 module.exports = async (client, guild) => {
