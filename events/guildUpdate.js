@@ -1,8 +1,13 @@
 // This event executes when a message is deleted
 const Discord = require('discord.js');
 
-String.prototype.toProperCase = function() {
-  return this.replace(/\w\S*/g, function(txt) {
+/**
+ * Takes the Input and Makes the input propercase
+ * @param {string} str - The String to be made Propercase
+ * @return {string} txt -  The Input string in Propercase
+ */
+function toProperCase(str) {
+	return this.replace(/\w\S*/g, function(txt) {
     return txt
       .charAt(0)
       .toUpperCase() + txt
@@ -16,7 +21,10 @@ function parseGuildChange(message) {
     .replace(/_/g, ' ')
     .toProperCase();
 }
-
+/**
+ * A module that does stuff when the guildUpdate event is fired
+ * @module guildUpdate
+ */
 module.exports = async (client, guild) => {
   const logs = guild
     .channels
