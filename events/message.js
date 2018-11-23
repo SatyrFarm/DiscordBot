@@ -3,9 +3,9 @@
 // goes `client, other, args` when this function is run.
 
 module.exports = async (client, message) => {
-  const settings = message.settings = client.getGuildSettings(message.guild)
+  const settings = message.settings = client.getGuildSettings(message.guild);
 
-  if(message.member.roles.find('name', 'muted')) {
+  if (message.member.roles.find('name', 'muted')) {
     message.delete();
     return;
   }
@@ -13,42 +13,25 @@ module.exports = async (client, message) => {
   // which is set in the configuration file.
   if (message.content.indexOf(settings.prefix) !== 0) {
     const key = `${message.guild.id}-${message.author.id}`;
-
-
     if (message.author.bot) return;
     if (!client.points.has(key)) {
       client.points.set(key, {
         user: message.author.id,
         guild: message.guild.id,
         points: 0,
-        level: 0
+        level: 0,
       });
-    }
-
     let currentPoints = client.points.getProp(key, 'points');
     client.points.setProp(key, 'points', ++currentPoints);
-
-  
     const curLevel = Math.floor(0.25 * Math.sqrt(currentPoints));
-
     const userLevel = parseInt(client.points.getProp(key, 'level'), 10);
-
-
-
-
     client.emit('levelUpdate', message.member, message.guild, message);
-
-
-
     if (userLevel !== curLevel) {
-
       client.points.setProp(key, 'level', curLevel);
       message.reply(`You have leveled up to level **${curLevel}**! Congratulations!`);
     }
-
     return;
   }
-
   // Here we separate our 'command' name, and our 'arguments' for the command.
   // e.g. if we have the message '+say Is this the real life?' , we'll get the following:
   // command = say
