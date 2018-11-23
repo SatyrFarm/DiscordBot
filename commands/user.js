@@ -1,13 +1,6 @@
-const {
-    version,
-} = require('discord.js');
-
 const moment = require('moment');
-
 require('moment-duration-format');
-
 const bVersion = require('project-version');
-
 exports.run = (client, message, args, level) => { // eslint-disable-line no-unused-vars
     const user = message
         .mentions
