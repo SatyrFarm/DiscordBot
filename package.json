@@ -1,12 +1,12 @@
 {
   "name": "OSWdiscordbot",
-  "version": "3.0.0",
-  "description": "",
+  "version": "3.0.2",
+  "description": "The Official Bot for OpenSimWorld and SatyrFarm",
   "main": "index.js",
   "scripts": {
     "test": "echo no testing right now!"
   },
-  "author": "",
+  "author": "Cody Cooper",
   "license": "MIT",
   "dependencies": {
     "chalk": "^2.4.1",
