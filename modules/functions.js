@@ -73,10 +73,12 @@ module.exports = (client) => {
     const returns = {};
     const overrides = client
       .settings
-      .get(guild.id) || {};
+      .get(guild.id) || {};  
     for (const key in def) {
-      returns[key] = overrides[key] || def[key];
+    if ({}.hasOwnProperty.call(def, key)) {
+        returns[key] = overrides[key] || def[key];
     }
+}
     return returns;
   };
 
