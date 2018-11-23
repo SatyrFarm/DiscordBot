@@ -1,8 +1,6 @@
 // This event executes when a message is deleted
 const Discord = require('discord.js');
 
-
-
 function parseChange(message) {
   if (!message) {
     return message;
