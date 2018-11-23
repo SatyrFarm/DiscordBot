@@ -7,6 +7,7 @@ module.exports = {
     'no-undef': 'error',
     'no-console': 'off',
     'no-extend-native': 'off',
+    'arrow-parens': 'off',
     "max-len": [
       2, {
         "code": 250,
