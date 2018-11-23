@@ -6,6 +6,7 @@ module.exports = {
     // Additional, per-project rules...
     'no-undef': 'error',
     'no-console': 'off',
+    'no-extend-native': 'off',
     "max-len": [
       2, {
         "code": 250,
