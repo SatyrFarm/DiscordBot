@@ -216,10 +216,9 @@ module.exports = (client) => {
   });
 
 process.on('unhandledRejection', err => {
-    client.logger.error(`Unhandled rejection: ${err.stack}`)
+    client.logger.error(`Unhandled rejection: ${err.stack}`);
   });
 process.on('uncaughtException', err => {
-    client.logger.error(`Uncaught Exception: ${err.stack}`)
+    client.logger.error(`Uncaught Exception: ${err.stack}`);
   });
-
 };
