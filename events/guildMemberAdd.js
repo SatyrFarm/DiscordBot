@@ -4,7 +4,10 @@ module.exports = (client, member) => {
   // Load the guild's settings
   const settings = client.getGuildSettings(member.guild);
   // PM The user the rules
-  pmUserRules(member, client);
+  if (member.bot === false) {
+    pmUserRules(member, client);
+}
+  
   // Give the person the intern role on join
   // NOTE: Only for the Unofficial Node.js Discord Server
   member.addRole(member.guild.roles.find((role) => role.name === 'Farmhand'));
