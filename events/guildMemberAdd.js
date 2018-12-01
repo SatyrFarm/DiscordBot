@@ -7,7 +7,6 @@ module.exports = (client, member) => {
   if (member.bot === false) {
     pmUserRules(member, client);
 }
-  
   // Give the person the intern role on join
   // NOTE: Only for the Unofficial Node.js Discord Server
   member.addRole(member.guild.roles.find((role) => role.name === 'Farmhand'));
