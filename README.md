@@ -37,3 +37,11 @@ We Want to Really be Open and Fair, so we want to make sure we credit [UnOfficia
 
 Please see [TODO](https://github.com/SatyrFarm/DiscordBot/blob/master/TODO.md) if you want to help out with this bot!
 
+------  
+## Install
+Let's give you a quickie guide
+
+### Requirements
+- A Sentry.io Project DSN(this goes in the config.js file under ```dsn```
+- A Discord Bot Token
+- The LTS Version of Node.js installed
