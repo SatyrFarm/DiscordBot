@@ -1,6 +1,6 @@
 {
   "name": "OSWdiscordbot",
-  "version": "3.0.2",
+  "version": "4.0.0",
   "description": "The Official Bot for OpenSimWorld and SatyrFarm",
   "main": "index.js",
   "scripts": {
