@@ -1,5 +1,5 @@
 /*
-Copyright 2018 Satyr Farm and Cody Cooper
+Copyright 2018-2019 Satyr Farm and Cody Cooper
 
 Permission is hereby granted, free of charge,
 to any person obtaining a copy of this software and associated documentation files (the "Software"),
