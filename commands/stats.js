@@ -1,4 +1,4 @@
-const {
+﻿const {
   version,
 } = require('discord.js');
 

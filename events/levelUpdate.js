@@ -1,69 +1,101 @@
 // This event executes when a new member joins a server. Let's welcome them!
-module.exports = async (client, member, guild, message) => {
-    const key = `${guild.id}-${member.id}`;
-    let level = parseInt(client.points.getProp(key, 'level'));
 
-    // NOTE: Debug messages
-    // console.log("Key: ", key);
-    // console.log("Level: ", level);
-    // console.log("Member ID: ", member.id)
-    // TODO: In the future use better removal of previous roles
-    // TODO: Add automatic role creation
-    // FUTURE: Add a prestige funciton for staff, but only based off of points that users approve, ie. +approve <User> and it boosts their points. Has to be low points
-    // BUG: This is not working
-    // Exempt ranks
-    if (member.roles.find('name', 'sf-developer') || member.roles.find('name', 'Moderator') || member.roles.find('name', 'Administrator')) return;
-    if (level <= 3) {
-        // Farmhand < 225
-    if (member.roles.find('name', 'Senior Farmhand')) {
-      member.removeRole(guild.roles.find((role) => role.name == 'Senior Farmhand'));
-    }
-    if (member.roles.find('name', 'Farmer')) {
-      member.removeRole(guild.roles.find((role) => role.name == 'Farmer'));
-    }
-    if (member.roles.find('name', 'Old Wise One')) {
-      member.removeRole(guild.roles.find((role) => role.name == 'Old Wise One'));
-    }
-    // Ensure they already have the role
-    if (member.roles.find('name', 'Farmhand')) {
+module.exports = async (client, member, guild, message) => {
+  const key = `${guild.id}-${member.id}`;
+  let level = parseInt(client.points.getProp(key, 'level'));
+
+  // NOTE: Debug messages console.log('Key: ', key); console.log('Level: ',
+  // level); console.log('Member ID: ', member.id)
+
+  const findMemberRole = name => member.roles.find(role => role.name === name);
+  const findGuildRole = name => guild.roles.find(role => role.name === name);
+
+  const roles = {
+    restricted: {
+      Geeks: findMemberRole('Geeks'),
+      Mod: findMemberRole('Mod'),
+      Admin: findMemberRole('Admin'),
+    },
+    unrestricted: {
+      'Intern': {
+        guildRole: findGuildRole('Intern'),
+        memberHas: findMemberRole('Intern'),
+        lowerLevel: 0,
+        upperLevel: 3,
+      },
+      'Junior Dev': {
+        guildRole: findGuildRole('Junior Dev'),
+        memberHas: findMemberRole('Junior Dev'),
+        lowerLevel: 3,
+        upperLevel: 5,
+      },
+      'Dev': {
+        guildRole: findGuildRole('Dev'),
+        memberHas: findMemberRole('Dev'),
+        lowerLevel: 5,
+        upperLevel: 7,
+      },
+      'Senior Dev': {
+        guildRole: findGuildRole('Senior Dev'),
+        memberHas: findMemberRole('Senior Dev'),
+        lowerLevel: 7,
+        upperLevel: 9999,
+      },
+    },
+  };
+
+  // if member has one of the 'restricted' roles, return and don't bother with levels
+  for (let role in roles.restricted) {
+    if (roles.restricted[role]) {
       return;
     }
-    // Add Farmhand role
-    member.addRole(guild.roles.find((role) => role.name === 'Farmhand'));
-    } else if (level > 3 && level <= 5) {
-        // Senior Farmhand, 225 - 624
-    // Ensure they already have the role
-    if (member.roles.find('name', 'Senior Farmhand')) {
-      return;
+  }
+
+  for (let role in roles.unrestricted) {
+    // get everything from the role
+    const {guildRole, memberHas, lowerLevel, upperLevel} = roles.unrestricted[
+      role
+    ];
+
+    // if they are between the upper and lower settings
+    // has to specify the 0 because 0 is not greater than 0, and you dont want to have >=
+    // on a lower bound
+
+    if (
+      (level > lowerLevel || (level === 0 && lowerLevel === 0)) &&
+      level <= upperLevel
+    ) {
+      // making an array of roles to be deleted
+      let rolesToDelete = [];
+
+      for (let roleObj in roles.unrestricted) {
+        roleObj = roles.unrestricted[roleObj];
+        if (roleObj.guildRole.name === role) {
+          continue;
+        } else {
+          if (roleObj.memberHas) {
+            rolesToDelete.push(roleObj);
+          }
+        }
+      }
+
+      // removing roles
+      rolesToDelete.map(role => {
+        member.removeRole(role.guildRole);
+        console.log('removed role');
+      });
+
+      // if they dont have the role, give it to them
+      if (!memberHas) {
+        member.addRole(guildRole);
+
+        // if the role is not intern, congragulate them.
+        if (role !== 'Intern') {
+          message.reply(
+            `You have leveled up to the next rank, **${role}**! Congratulations!`
+          );
+        }
+      }
     }
-        // Remove previous role
-        if (member.roles.find('name', 'Farmhand')) member.removeRole(guild.roles.find(role => role.name === 'Farmhand'));
-    // Add Senior Farmhand role
-    member.addRole(guild.roles.find((role) => role.name === 'Senior Farmhand'));
-        if (message) return message.reply(`You have leveled up to the next rank, **Senior Farmhand**! Congratulations!`);
-    } else if (level > 5 && level <= 7) {
-        // Farmer, 625-1224
-        // Check if user already has the role
-        if (member.roles.find('name', 'Farmer')) return;
-        // Remove previous roles
-        if (member.roles.find('name', 'Farmhand')) member.removeRole(guild.roles.find(role => role.name === 'Farmhand'));
-        if (member.roles.find('name', 'Senior Farmhand')) member.removeRole(guild.roles.find(role => role.name == 'Senior Farmhand'));
-    // Add Intern role
-    member.addRole(guild.roles.find((role) => role.name === 'Intern'));
-        if (message) return message.reply(`You have leveled up to the next rank, **Farmer**! Congratulations!`);
-    } else if (level > 7 && level <= 9) {
-        // Old Wise One , 1224 - 2025
-        // Check if user already has the role
-        if (member.roles.find('name', 'Old Wise One')) return;
-        // Remove previous roles
-        if (member.roles.find('name', 'Farmhand')) member.removeRole(guild.roles.find(role => role.name === 'Farmhand'));
-        if (member.roles.find('name', 'Senior Farmhand')) member.removeRole(guild.roles.find(role => role.name == 'Senior Farmhand'));
-        if (member.roles.find('name', 'Farmer')) member.removeRole(guild.roles.find(role => role.name === 'Farmer'));
-        // Add Old Wise One role
-        member.addRole(guild.roles.find(role => role.name === 'Old Wise One'));
-        if (message) return message.reply(`You have leveled up to the next rank, **Old Wise One**! Congratulations! You may now go too the front porch and get some iced tea and your shotgun on the rocking chair`);
-    } else {
-        // What ever, 2+ points
-        // NOTE: Decide last rank at this time they have 10k+ messages so either a bug, rewarded these points or other
-    }
+  }
 };

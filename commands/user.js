@@ -1,4 +1,4 @@
-const moment = require('moment');
+﻿const moment = require('moment');
 require('moment-duration-format');
 exports.run = (client, message, args, level) => { // eslint-disable-line no-unused-vars
     const user = message
@@ -25,20 +25,18 @@ exports.run = (client, message, args, level) => { // eslint-disable-line no-unus
         message
             .channel
             .send(`= User STATISTICS =
-• Last Messsage  :: ${user.lastMessage.content || 'none'}
 • Username       :: ${user.username + user.discriminator}
 • Points         :: ${userPoints}
 • Level          :: ${userLevel}
 • Joined Discord :: ${userFor}
-• Bot            :: ${user.bot}
-• Warns          :: **COMING SOON**`, {
+• Bot            :: ${user.bot}`, {
                 code: 'asciidoc',
             });
     } else {
         message
             .channel
             .send(`= User STATISTICS =
-• Last Messsage  :: ${user.lastMessage.content || 'none'}
+
 • Username       :: ${user.username + user.discriminator}
 • Joined Discord :: ${userFor}
 • Bot            :: ${user.bot}`, {
