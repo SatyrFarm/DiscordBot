@@ -8,7 +8,7 @@
   },
   "author": "Cody Cooper",
   "license": "MIT",
-  "dependencies": {
+   "dependencies": {
     "chalk": "^2.4.2",
     "codacy-coverage": "^3.4.0",
     "console.table": "^0.10.0",
